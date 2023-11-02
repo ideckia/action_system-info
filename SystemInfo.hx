@@ -10,7 +10,7 @@ typedef Props = {
 }
 
 @:name("system-info")
-@:description("Shows the information about the computers battery")
+@:description("Shows the information about the system")
 class SystemInfo extends IdeckiaAction {
 	var updateTimer:haxe.Timer;
 
