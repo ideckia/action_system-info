@@ -72,14 +72,10 @@ class SystemInfo extends IdeckiaAction {
 				if (timeRemaining != null) {
 					var hours = Math.floor(timeRemaining / 60);
 					var minutes = timeRemaining - hours * 60;
-					// var hours = Math.floor(timeRemaining);
-					// var minutes = Math.floor((timeRemaining - hours) * 60);
 					var hourString = (hours < 10) ? '0$hours' : '$hours';
 					var minutesString = (minutes < 10) ? '0$minutes' : '$minutes';
 					timeRemaininString = '$hourString:$minutesString';
 				}
-
-				if (!batteryInfo.hasBattery) {}
 
 				var text = 'Battery:\n';
 				text += new RichString('%${batteryInfo.percent}').bold() + '\n';
