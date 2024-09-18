@@ -3,14 +3,15 @@ package;
 using api.IdeckiaApi;
 
 typedef Props = {
-	@:editable('Show information of...', 'battery', ['battery', 'cpu_temperature', 'memory'])
+	@:editable('prop_info_of', 'battery', ['battery', 'cpu_temperature', 'memory'])
 	var info_of:String;
-	@:editable("Update interval in seconds", 60)
+	@:editable("prop_update_interval", 60)
 	var update_interval:UInt;
 }
 
 @:name("system-info")
-@:description("Shows the information about the system")
+@:description("action_description")
+@:localize
 class SystemInfo extends IdeckiaAction {
 	var updateTimer:haxe.Timer;
 
@@ -18,7 +19,7 @@ class SystemInfo extends IdeckiaAction {
 		if (updateTimer == null) {
 			updateTimer = new haxe.Timer(props.update_interval * 1000);
 			updateTimer.run = () -> {
-				update(state).then(newState -> server.updateClientState(newState));
+				update(state).then(newState -> core.updateClientState(newState));
 			};
 		}
 	}
@@ -58,7 +59,7 @@ class SystemInfo extends IdeckiaAction {
 				case 'memory':
 					getMemoryInfo(state).then(resolve);
 				case i:
-					state.text = 'Can\'t get info about [$i]';
+					state.text = Loc.unknown_about.tr([i]);
 					resolve(state);
 			}
 		});
@@ -77,9 +78,9 @@ class SystemInfo extends IdeckiaAction {
 					timeRemaininString = '$hourString:$minutesString';
 				}
 
-				var text = 'Battery:\n';
+				var text = Loc.battery.tr() + '\n';
 				text += new RichString('%${batteryInfo.percent}').bold() + '\n';
-				text += (batteryInfo.acConnected) ? 'Charging' : timeRemaininString;
+				text += (batteryInfo.acConnected) ? Loc.charging.tr() : timeRemaininString;
 				state.text = text;
 				resolve(state);
 			});
@@ -89,7 +90,7 @@ class SystemInfo extends IdeckiaAction {
 	function getCpuTemperature(state:ItemState):js.lib.Promise<ItemState> {
 		return new js.lib.Promise((resolve, reject) -> {
 			SystemInformationJs.cpuTemperature().then(cpuTemperature -> {
-				var text = 'CPU temp.:\n';
+				var text = Loc.cpu_temp.tr() + '\n';
 				text += new RichString('${cpuTemperature.main} ºC').bold();
 				state.text = text;
 				resolve(state);
@@ -100,7 +101,7 @@ class SystemInfo extends IdeckiaAction {
 	function getMemoryInfo(state:ItemState):js.lib.Promise<ItemState> {
 		return new js.lib.Promise((resolve, reject) -> {
 			SystemInformationJs.mem().then(memoryInfo -> {
-				var text = 'Memory:\n';
+				var text = Loc.memory.tr() + '\n';
 				var divisor = 10000000;
 				var memTotal = Math.round(memoryInfo.total / divisor);
 				var totalGb = memTotal / 100;

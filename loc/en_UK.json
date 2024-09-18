@@ -1,0 +1,34 @@
+[
+	{
+		"id": "action_description",
+		"text": "Shows the information about the system"
+	},
+	{
+		"id": "prop_info_of",
+		"text": "Show information of..."
+	},
+	{
+		"id": "prop_update_interval",
+		"text": "Update interval in seconds."
+	},
+	{
+		"id": "unknown_about",
+		"text": "Can't get info about [{0}]"
+	},
+	{
+		"id": "battery",
+		"text": "Battery:"
+	},
+	{
+		"id": "charging",
+		"text": "Charging"
+	},
+	{
+		"id": "cpu_temp",
+		"text": "CPU temp.:"
+	},
+	{
+		"id": "memory",
+		"text": "Memory:"
+	}
+]

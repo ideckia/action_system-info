@@ -1,0 +1,34 @@
+[
+	{
+		"id": "action_description",
+		"text": "Sistemaren informazioa erakusten du"
+	},
+	{
+		"id": "prop_info_of",
+		"text": "Honen informazioa erakutis..."
+	},
+	{
+		"id": "prop_update_interval",
+		"text": "Eguneratze maiztasuna segundotan."
+	},
+	{
+		"id": "unknown_about",
+		"text": "Ezin da buruzko informaziorik lortu: [{0}]"
+	},
+	{
+		"id": "battery",
+		"text": "Bateria:"
+	},
+	{
+		"id": "charging",
+		"text": "Kargatzen"
+	},
+	{
+		"id": "cpu_temp",
+		"text": "PUZ tenp.:"
+	},
+	{
+		"id": "memory",
+		"text": "Memoria:"
+	}
+]
