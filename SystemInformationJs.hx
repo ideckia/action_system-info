@@ -8,9 +8,6 @@ extern class SystemInformationJs {
 	static function mem():js.lib.Promise<MemoryInfo>;
 }
 
-// @:jsRequire('systeminformation', 'cpuTemperature')
-// extern class CpuTemperatureJs {}
-
 typedef BatteryInfo = {
 	var hasBattery:Bool; // true,
 	var cycleCount:Int; // 35,
