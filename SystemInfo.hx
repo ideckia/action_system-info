@@ -28,6 +28,10 @@ class SystemInfo extends IdeckiaAction {
 		return show(initialState);
 	}
 
+	override function deinit() {
+		hide();
+	}
+
 	override function show(currentState:ItemState):js.lib.Promise<ItemState> {
 		return new js.lib.Promise((resolve, reject) -> {
 			newTimer(currentState);
